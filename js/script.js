@@ -65,6 +65,15 @@ if (viewportWidth > 800) {
     })
     );
 
+    eventIcons.forEach(eventIcons => eventIcons.addEventListener('mouseout', function() {
+        let bars = document.querySelector('.bar');
+        let barWidth = eventIcons.closest('.event-block').getAttribute('proc');
+            bars.style.width = `0%`;
+        let rightc = eventIcons.nextSibling;
+            rightc.classList.remove('current');
+    })
+    );
+
 
 } else {
     // Nothing
