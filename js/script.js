@@ -53,7 +53,7 @@ window.addEventListener('resize', function() {
     var viewportWidth = window.innerWidth;
 
     if (viewportWidth > 800) {
-        eventDiv.style.left = `calc(${procOfTimeline}% - 40px)`;
+        eventDiv.style.left = `calc(${procOfTimeline}% - 20px)`;
     
         let eventIcons = document.querySelectorAll('.event-icon');
         
@@ -83,7 +83,7 @@ window.addEventListener('resize', function() {
 var viewportWidth = window.innerWidth;
 
 if (viewportWidth > 800) {
-    eventDiv.style.left = `calc(${procOfTimeline}% - 40px)`;
+    eventDiv.style.left = `calc(${procOfTimeline}% - 20px)`;
 
     let eventIcons = document.querySelectorAll('.event-icon');
     
@@ -93,6 +93,19 @@ if (viewportWidth > 800) {
             bars.style.width = `calc(${barWidth}% - 20px)`;
         let rightc = eventIcons.nextSibling;
             rightc.classList.add('current');
+
+        let procc = eventIcons.closest('.event-block').getAttribute('proc');
+        procc = parseInt(procc);
+        let events = document.querySelectorAll('.event-block');
+        events.forEach(events => {
+            let attr = events.getAttribute('proc');
+            attr = parseInt(attr);
+            if (attr <= procc) {
+                events.children[0].style.background = "#5673b8";
+            } else {
+                events.children[0].style.background = "#122244";
+            }
+        })
     })
     );
 
@@ -102,6 +115,10 @@ if (viewportWidth > 800) {
             bars.style.width = `0%`;
         let rightc = eventIcons.nextSibling;
             rightc.classList.remove('current');
+
+        let highlights = document.querySelectorAll('.event-icon');
+            highlights.forEach(highlights => highlights.style.background = "#122244");
+
     })
     );
 

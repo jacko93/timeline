@@ -137,7 +137,7 @@ h1 {
     }
 
     .timer {
-        border: 1px solid grey;
+        border: 1px solid #122244;
         height: 10px;
         width: 100%;
         position: absolute;
@@ -150,10 +150,8 @@ h1 {
     }
 
     .bar {
-        height: 8px;
+        height: 10px;
         width: 0%;
-        border: 1px solid grey;
         transition: .75s ease;
-        background: #122244;
+        background: #5673b8;
     }
-}
