@@ -49,6 +49,37 @@ table.forEach(entry =>  {
     eventDate.innerHTML = entry[0];
 
 // If viewport > 801px
+window.addEventListener('resize', function() {
+    var viewportWidth = window.innerWidth;
+
+    if (viewportWidth > 800) {
+        eventDiv.style.left = `calc(${procOfTimeline}% - 40px)`;
+    
+        let eventIcons = document.querySelectorAll('.event-icon');
+        
+        eventIcons.forEach(eventIcons => eventIcons.addEventListener('mouseover', function() {
+            let bars = document.querySelector('.bar');
+            let barWidth = eventIcons.closest('.event-block').getAttribute('proc');
+                bars.style.width = `calc(${barWidth}% - 20px)`;
+            let rightc = eventIcons.nextSibling;
+                rightc.classList.add('current');
+        })
+        );
+    
+        eventIcons.forEach(eventIcons => eventIcons.addEventListener('mouseout', function() {
+            let bars = document.querySelector('.bar');
+            let barWidth = eventIcons.closest('.event-block').getAttribute('proc');
+                bars.style.width = `0%`;
+            let rightc = eventIcons.nextSibling;
+                rightc.classList.remove('current');
+        })
+        );
+    
+    } else {
+        // Nothing
+    }
+});
+
 var viewportWidth = window.innerWidth;
 
 if (viewportWidth > 800) {
@@ -73,7 +104,6 @@ if (viewportWidth > 800) {
             rightc.classList.remove('current');
     })
     );
-
 
 } else {
     // Nothing
